@@ -1,7 +1,11 @@
-var run = function() {
-  $(function() {
-    $('li:first-child').addClass('emphasis');
-  });
-};
+(function() {
+  $('dd').filter(':nth-child(n+4)').addClass('hide');
 
-run();
+  $('dl').on('mouseenter', function() {
+    $(this)
+      .next()
+        .slideDown(200)
+          .siblings('dd')
+            .slideUp(200);
+  })
+})();

@@ -2,20 +2,21 @@
 <html>
 <head>
   <meta charset=utf-8>
-  <title>Appending Content</title>
-  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Hide and reveal</title>
 </head>
 <body>
 <article>
-  <h1> Post </h1>
-  <p><span class="co">Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Necessitatibus numquam eligendi unde nisi esse aperiam, itaque, consectetur repellendus accusamus ratione atque excepturi fugit cumque non quasi quidem. Optio, commodi, accusamus.
-  </p>
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatem doloremque id praesentium cumque, minus eius iusto ea ducimus? Sit, odio! Saepe adipisci facere deserunt natus fugiat libero, odio cupiditate.
-  </p>
-  <p><span class="co">Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Necessitatibus numquam eligendi unde nisi esse aperiam, itaque, consectetur repellendus accusamus ratione atque excepturi fugit cumque non quasi quidem. Optio, commodi, accusamus.
-  </p>
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatem doloremque id praesentium cumque, minus eius iusto ea ducimus? Sit, odio! Saepe adipisci facere deserunt natus fugiat libero, odio cupiditate.
-  </p>
+  <h1> Reveal </h1>
+  <div class="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus numquam eligendi unde nisi esse aperiam, itaque, consectetur repellendus accusamus ratione atque excepturi fugit cumque non quasi quidem. Optio, commodi, accusamus.
+    </p>
+    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatem doloremque id praesentium cumque, minus eius iusto ea ducimus? Sit, odio! Saepe adipisci facere deserunt natus fugiat libero, odio cupiditate.
+    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus numquam eligendi unde nisi esse aperiam, itaque, consectetur repellendus accusamus ratione atque excepturi fugit cumque non quasi quidem. Optio, commodi, accusamus.
+    </p>
+    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatem doloremque id praesentium cumque, minus eius iusto ea ducimus? Sit, odio! Saepe adipisci facere deserunt natus fugiat libero, odio cupiditate.
+    </p>
+  </div>
 </article>
 
 
@@ -24,17 +25,18 @@
 
 <script>
 (function() {
-  var co = $('article').find('span.co').each(function() {
-    var $this = $(this);
-    $('<blockquote></blockquote', {
-      class: 'co',
-      text: $this.text()
-    }).prependTo( $this.closest ('p') );
-    });
+  $('div.content').hide();
+
+  $.fx.speeds._default = 2000;
+  $.fx.speeds.tortoise = 10000;
+
+  $('h1').on('click', function() {
+    $(this).next().slideDown('tortoise');
+  })
 })();
 
 </script>
-<script src="app.js"></script>
+
 </body>
 
 </html>

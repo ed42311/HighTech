@@ -2,43 +2,35 @@
 <html>
 <head>
   <meta charset=utf-8>
-  <title>jQuery Night and Day</title>
-  <intercept-url pattern="http://blackfootcarvings.com/favicon.ico" access="ROLE_ANONYMOUS" />
-  <link rel="shortcut icon" href="http://blackfootcarvings.com/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="http://blackfootcarvings.com/favicon.ico" type="image/x-icon">
+  <title>Appending Content</title>
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-<h1>My Website!</h1>
-<dl>
-  <dt> What are your hours? </dt>
-  <dd> We are open 24/7 </dd>
-  <dt> What are your hours? </dt>
-  <dd> We are open 24/7 </dd>
-  <dt> What are your hours? </dt>
-  <dd> We are open 24/7 </dd>
-  <dt> What are your hours? </dt>
-  <dd> We are open 24/7 </dd>
-  <dt> What are your hours? </dt>
-  <dd> We are open 24/7 </dd>
-</dl>
+<article>
+  <h1> Post </h1>
+  <p><span class="co">Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Necessitatibus numquam eligendi unde nisi esse aperiam, itaque, consectetur repellendus accusamus ratione atque excepturi fugit cumque non quasi quidem. Optio, commodi, accusamus.
+  </p>
+  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatem doloremque id praesentium cumque, minus eius iusto ea ducimus? Sit, odio! Saepe adipisci facere deserunt natus fugiat libero, odio cupiditate.
+  </p>
+  <p><span class="co">Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Necessitatibus numquam eligendi unde nisi esse aperiam, itaque, consectetur repellendus accusamus ratione atque excepturi fugit cumque non quasi quidem. Optio, commodi, accusamus.
+  </p>
+  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis voluptatem doloremque id praesentium cumque, minus eius iusto ea ducimus? Sit, odio! Saepe adipisci facere deserunt natus fugiat libero, odio cupiditate.
+  </p>
+</article>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
 <script>
 (function() {
-  var link = $('link');
-  $('button').on('click', function() {
-    var $this = $(this),
-        stylesheet = $this.data('file');
-
-    link.attr('href', stylesheet + '.css');
-
-    $this
-        .siblings('button')
-        .removeAttr('disabled')
-        .end()
-        .attr('disabled','disabled');
-  });
+  var co = $('article').find('span.co').each(function() {
+    var $this = $(this);
+    $('<blockquote></blockquote', {
+      class: 'co',
+      text: $this.text()
+    }).prependTo( $this.closest ('p') );
+    });
 })();
 
 </script>
